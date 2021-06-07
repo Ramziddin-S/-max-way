@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Unique Visitors</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+</div>
+
+<div class="col-md-12">
+    <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  Bar Chart
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="bar-chart" style="height: 300px; padding: 0px; position: relative;"><canvas class="flot-base" width="475" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 475px; height: 300px;"></canvas><canvas class="flot-overlay" width="475" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 475px; height: 300px;"></canvas><div class="flot-svg" style="position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; pointer-events: none;"><svg style="width: 100%; height: 100%;"><g class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px;"><text x="96.22869318181819" y="293.75" class="flot-tick-label tickLabel" style="position: absolute; text-align: center;">February</text><text x="179.46946022727272" y="293.75" class="flot-tick-label tickLabel" style="position: absolute; text-align: center;">March</text><text x="259.24928977272725" y="293.75" class="flot-tick-label tickLabel" style="position: absolute; text-align: center;">April</text><text x="335.5603693181818" y="293.75" class="flot-tick-label tickLabel" style="position: absolute; text-align: center;">May</text><text x="25.30042613636364" y="293.75" class="flot-tick-label tickLabel" style="position: absolute; text-align: center;">January</text><text x="408.7698863636364" y="293.75" class="flot-tick-label tickLabel" style="position: absolute; text-align: center;">June</text></g><g class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;"><text x="10" y="268.25" class="flot-tick-label tickLabel" style="position: absolute; text-align: right;">0</text><text x="10" y="205.25" class="flot-tick-label tickLabel" style="position: absolute; text-align: right;">5</text><text x="1" y="16.25" class="flot-tick-label tickLabel" style="position: absolute; text-align: right;">20</text><text x="1" y="142.25" class="flot-tick-label tickLabel" style="position: absolute; text-align: right;">10</text><text x="1" y="79.25" class="flot-tick-label tickLabel" style="position: absolute; text-align: right;">15</text></g></svg></div></div>
+              </div>
+              <!-- /.card-body-->
+            </div>
+
+</div>
+
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'dashboard/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+
+<!-- FLOT CHARTS -->
+<script src="{% static 'dashboard/plugins/flot/jquery.flot.js' %}"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="{% static 'dashboard/plugins/flot/plugins/jquery.flot.resize.js' %}"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="{% static 'dashboard/plugins/flot/plugins/jquery.flot.pie.js' %}"></script>
+
+
+
+<script>
+   var bar_data = {
+      data : [
+
+      {% for cat in categories %}
+        [{{ forloop.counter }}, {{ cat.count }}],
+      {% endfor %}
+      ],
+      bars: { show: true }
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+         bars: {
+          show: true, barWidth: 0.5, align: 'center',
+        },
+      },
+      colors: ['#3c8dbc'],
+      xaxis : {
+        ticks: [
+            {% for cat in categories %}
+        [{{ forloop.counter }}, '{{ cat.category }}'],
+      {% endfor %}
+        ]
+      }
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Order List</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active">Order List</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+<form method="post">
+  {% csrf_token %}
+  <select onchange="this.form.submit(">
+    <option value="all">Hammasi</option>
+    <option value="done">Done</option>
+    <option value="failed">Failed</option>
+  </select>
+</form>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Order list</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Name</th>
+                      <th>status</th>
+                      <th>total_price</th>
+                      <th>created_at</th>
+                      <th>Change_status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for order in orders  %}
+                    {% if forloop.counter0 < 6 %}
+                    <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ order.first_name }}</td>
+                      <td>{{ order.status }}</td>
+                      <td>{{ order.total_price }}</td>
+                      <td>{{ order.created_at }}</td>
+                      <td>
+                        {% if order.status == 1 %}
+                        <a href="{% url 'status' pk=order.id status=2 %}"><div class="btn btn-sm btn-success">Done</div></a>
+                        <a href="{% url 'status' pk=order.id status=3 %}"><div class="btn btn-sm btn-danger">Failed</div></a>
+                        {% elif order.status == 2 %}
+                        Done
+                        {% elif order.status == 3 %}
+                        Failed
+                        {% endif %}
+                      </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
