@@ -16,6 +16,7 @@ class ProductForm(forms.ModelForm):
             "name": "Enter name"
         }
 
+
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order()

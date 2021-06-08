@@ -29,10 +29,8 @@ class Order(models.Model):
 
 
 class User(models.Model):
-    room_number = models.CharField(max_length=100, blank=False, null=False)
     first_name = models.CharField(max_length=120, blank=False, null=False)
     last_name = models.CharField(max_length=130, blank=False, null=False)
-    cash_payment = models.IntegerField(blank=False, null=False, default=0)
     address = models.TextField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     phone = models.CharField(max_length=100, blank=False, null=False)

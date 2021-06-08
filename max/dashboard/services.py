@@ -8,11 +8,12 @@ def get_categories():
         categories = dictfetchall(cursor)
     return categories
 
+
 def get_categories_news_count():
     with closing(connection.cursor()) as cursor:
         cursor.execute(
             """select way_category.name as category, count(way_product.id) as count from way_category
-            left join way_product on way_category.id = way_product.category_id 
+            left join way_product on way_category.id = way_product.id 
             group by way_category.name"""
         )
         categories = dictfetchall(cursor)
@@ -32,8 +33,8 @@ def get_product_by_id(product_id):
 def get_product():
     with closing(connection.cursor()) as cursor:
         cursor.execute("""select * from way_product""")
-        product = dictfetchall(cursor)
-    return product
+        products = dictfetchall(cursor)
+    return products
 
 
 def get_user():
@@ -53,13 +54,10 @@ def get_order():
 def get_status_info(status):
     with closing(connection.cursor()) as cursor:
         cursor.execute(f"""select way_user.*, way_order.status as status from way_user left join way_order 
-        on way_user.id = way_order.id where status in ({str(status).strip("[]")})"""
+        on way_user.order_id = way_order.id where status in ({str(status).strip("[]")})"""
                        )
         status = dictfetchall(cursor)
     return status
-
-
-
 
 
 def dictfetchall(cursor):
@@ -77,18 +75,3 @@ def dictfetchone(cursor):
         return False
     columns = [col[0] for col in cursor.description]
     return dict(zip(columns, row))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

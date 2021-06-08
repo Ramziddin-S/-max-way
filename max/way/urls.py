@@ -5,7 +5,12 @@ urlpatterns = [
     path('', views.home_page, name='home-page'),
     path('dashboard/', include('dashboard.urls')),
     path('order/save/', views.order_save, name="order-save"),
-    path('order/', views.order_page, name="order-page")
+    path('<int:order_id>/order/', views.order_page, name="order")
 
 
 ]
+
+
+
+
+
