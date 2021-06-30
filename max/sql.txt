@@ -1,0 +1,36 @@
+INSERT INTO public.way_category
+(id, name, created_at, combo)
+VALUES(6, 'Ichimliklar', '2021-05-28 08:44:19.765', false);
+INSERT INTO public.way_category
+(id, name, created_at, combo)
+VALUES(2, 'Burger', '2021-05-28 08:43:12.180', true);
+INSERT INTO public.way_category
+(id, name, created_at, combo)
+VALUES(3, 'Kombo', '2021-05-28 08:43:41.442', false);
+INSERT INTO public.way_category
+(id, name, created_at, combo)
+VALUES(4, 'Salat', '2021-05-28 08:43:54.086', true);
+INSERT INTO public.way_category
+(id, name, created_at, combo)
+VALUES(5, 'Shirinliklar', '2021-05-28 08:44:08.704', true);
+INSERT INTO public.way_category
+(id, name, created_at, combo)
+VALUES(1, 'Pitsa', '2021-05-28 08:42:50.676', true);
+
+
+2	Mexica	images/pitza1_u4iVS1e.png	53000	2021-05-28 08:49:49	1	"Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+53,000 U"
+1	Gavaya	images/pitza2_5JMuAyx.png	45000	2021-05-28 08:48:52	1	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+3	Cheeseburger	images/burger.png	24000	2021-05-28 09:29:52	2	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+4	Chili burger	images/burger_EfDL57m.png	23000	2021-05-28 09:30:42	2	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+5	Kombo-1	images/kombo1.png	25000	2021-05-28 09:31:59	3	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+6	Kombo-2	images/kombo2.png	4500	2021-05-28 09:32:40	3	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+7	Hot achchiko	images/pitza3.png	1	2021-06-04 21:20:55	1	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+8	Hot achchiko	images/pitza3_mpUEutu.png	64000	2021-06-08 16:20:56	1	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+9	Mexica	images/pitza4.png	55000	2021-06-08 16:23:05	1	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+10	Sprite 1L	images/sprite.png	6000	2021-06-08 16:25:01	6	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+11	Coca cola 1,5L	images/cola.png	10000	2021-06-08 16:25:54	6	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+12	Fanta 1L	images/fanta.png	11000	2021-06-08 16:26:32	6	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+13	Hamburger	images/burger_Q3haLE9.png	23000	2021-06-08 16:27:48	2	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+14	Double Burger	images/burger_VJLHNnu.png	23000	2021-06-08 16:29:04	2	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле
+15	Kombo-3	images/kombo2_SuCZQci.png	24000	2021-06-08 16:35:59	3	Горячая закуска с митболами из говядины, томатами, моцареллой и соусом чипотле

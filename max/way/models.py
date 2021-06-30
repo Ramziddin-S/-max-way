@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Category(models.Model):
     name = models.CharField(max_length=150, blank=False, null=False)
     combo = models.BooleanField(default=False)
@@ -7,6 +8,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     title = models.CharField(max_length=110, blank=False, null=False)
@@ -39,3 +41,14 @@ class User(models.Model):
 
     def __str__(self):
         return self.first_name
+
+
+class Bot_user(models.Model):
+    chat_id = models.IntegerField(default=0, blank=False, null=True)
+    first_name = models.CharField(max_length=123, blank=False, null=True)
+    last_name = models.CharField(max_length=125, blank=False, null=True)
+    contact = models.CharField(max_length=120, blank=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "bot_user"

@@ -11,22 +11,8 @@ def home_page(request):
     if request.GET:
         product = get_product_by_id(request.GET.get("product_id", 0))
         return JsonResponse(product)
-
     products = get_product()
     categories = get_categories()
-    # for category in categories:
-    #     products.append(
-    #         {
-    #             "category": category.name,
-    #             "products": Product.objects.filter(category_id=category.id)
-    #         }
-    #     )
-    # for category in categories:
-    #     for prod in products:
-    #         print(prod.title)
-    #         # if category.id == prod.category_id:
-    #         #     print(prod.title)
-
     orders = []
     orders_list = request.COOKIES.get("orders")
     if orders_list:
